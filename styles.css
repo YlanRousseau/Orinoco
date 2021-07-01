@@ -13,6 +13,12 @@
 .text-center {
     text-align: center;
     color: white;
+    text-decoration: none;
+    list-style: none;
+}
+
+a {
+    color: #FFF;
 }
 
 .border {
