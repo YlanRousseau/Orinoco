@@ -52,7 +52,7 @@ a {
     height: 350px;
 }
 
-#btnAddBasket {
+#btnAddPanier {
     background-image: linear-gradient( 315deg, rgba(147, 86, 220, 0.95), rgb(255 164 121 / 95%));
     border: 1px purple;
 }

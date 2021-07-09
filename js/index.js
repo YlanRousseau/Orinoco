@@ -14,7 +14,7 @@
                                 <h5 class="card-title">${teddy.name}</h5>
                             </div>
                             <div class="col-6 col-sm-5 mt-3 text-end ">
-                                <h5 class="card-title">${teddy.price/100}€</h5>
+                                <h5 class="card-title">${teddy.price/100},00€</h5>
                             </div>
                         </div>
                         <a href="/frontend/produit.html" class="btn btn-primary">Ajouter au panier</a>
