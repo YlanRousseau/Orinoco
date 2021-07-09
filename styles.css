@@ -31,6 +31,23 @@ a {
     padding: 2rem 0;
 }
 
-.bg-light {
+.rounded-3 {
     background-image: linear-gradient( 315deg, rgba(147, 86, 220, 0.95), rgb(255 164 121 / 95%));
+}
+
+.colorfoot {
+    background-image: linear-gradient( 315deg, rgba(147, 86, 220, 0.95), rgb(255 164 121 / 95%));
+}
+
+.mb3 {
+    border: 2px violet;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.img-fuild {
+    width: 100%;
+    height: 350px;
 }
