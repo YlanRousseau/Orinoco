@@ -9,7 +9,7 @@
                 <div class="card border bg-light shadow p-3 mb-5 mx-3 my-3 bg-body rounded">
                     <div class="card-body">
                         <div class="row">
-                            <a href="/frontend/produit.html"><img src="${teddy.imageUrl}" class="img-fluid p-1" alt="${teddy.name}"></a>
+                            <a href="/frontend/produit.html?id=${teddy._id}"><img src="${teddy.imageUrl}" class="img-fluid p-1" alt="${teddy.name}"></a>
                             <div class="col-6 col-sm-7 mt-3">
                                 <h5 class="card-title">${teddy.name}</h5>
                             </div>
