@@ -8,14 +8,14 @@
     <script src="https://kit.fontawesome.com/3b81757485.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles.css">
-    <title>Bienvenue sur Orinoco</title>
+    <title>Orinoco - Panier</title>
 </head>
 
 <body>
     <!--Header et nav-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white ">
         <div class="container-fluid mx-2 mx-lg-5">
-            <a href="/index.html"><img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="/images/logo.png" alt="logo orinoco"></a>
+            <img class="img-fluid mx-4 mx-lg-0 mr-auto w-25" src="/images/logo.png" alt="logo orinoco">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,14 +32,51 @@
             </div>
         </div>
     </nav>
-    <main class="padd py-4">
-        <div class="container">
-            <div class="h-100 p-5 bg-light border rounded-3">
-                <h5 class="text-center">Aucun article pour le moment.</h4>
-
-            </div>
+    <section id="emptyBasket">
+        <div class="basket-desc">
+            <p class="">Votre panier est vide </p>
         </div>
-    </main>
+    </section>
+    <section class="cart_section">
+
+    </section>
+    <div class="order_total">
+        <div class="order_total_content text-md-right">
+            <div class="order_total_title">Prix total:</div>
+            <div class="order_total_amount"></div>
+        </div>
+    </div>
+
+    <section class="formulaire">
+        <form>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Nom</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Prénom</label>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefaultUsername">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault03">Ville</label>
+                    <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+                </div>
+            </div>
+            <button class="btn btn-primary mx-4 my-4" type="submit">Submit form</button>
+        </form>
+    </section>
 
     <footer class="bg-light py-4 colorfoot">
         <ul class="text-center">

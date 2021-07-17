@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/3b81757485.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles.css">
-    <title>Bienvenue sur Orinoco</title>
+    <title>Orinoco - Produit</title>
 </head>
 
 <body>
@@ -26,30 +26,31 @@
                         <a class="nav-link active" aria-current="page" href="/index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Panier</a>
+                        <a class="nav-link active" href="/frontend/panier.html">Panier</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <section class="mx-3 my-5">
+    <section class="mx-3 my-5" id="secContainer">
         <div class="card px-0 mx-3 my-4 border-0">
             <div class="row shadow p-3 rounded" id="product">
-                <div class="col-md-7" id="productImage">
-                    <!--image-->
+                <div class="col-md-7">
+                    <img src="" class="img-thumbnail " id="productImage" alt="Norbert">
                 </div>
                 <div class="col-md-5">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6 col-sm-7 mt-3" id="productName">
-                                <!--name-->
+                            <div class="col-6 col-sm-7 mt-3">
+                                <h5 id="productName"></h5>
                             </div>
-                            <div class="col-6 col-sm-5 text-end mt-3" id="productPrice">
-                                <!--price-->
+
+                            <div class="col-6 col-sm-5 text-end mt-3">
+                                <h5 id="productPrice"> </h5>
                             </div>
                         </div>
-                        <div class="mb-3" id="productDescription">
-                            <!--description-->
+                        <div class="mb-3">
+                            <p id="productDescription"></p>
                         </div>
                         <div class="row">
                             <div class="col-5 col-sm-3 col-md-5 col-lg-4 col-xl-3 my-auto">
@@ -62,7 +63,7 @@
 
                             </div>
                         </div>
-                        <button id="btnAddPanier" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myModal">Ajouter au panier</button>
+                        <button id="btnAddPanier" class="btn btn-secondary" type="submit">Ajouter au panier</button>
                     </div>
                 </div>
             </div>
