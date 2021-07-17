@@ -13,9 +13,12 @@ function displayCart() {
         let el = document.querySelector("#emptyBasket");
         el.remove();
         document.querySelector(".cart_section").style.display = "block";
+
     } else {
         let el2 = document.querySelector(".formulaire");
         el2.remove();
+        el3 = document.querySelector(".order_total");
+        el3.remove();
     }
 
     let structureProductBasket = [];
