@@ -38,7 +38,6 @@
         </div>
     </section>
     <section class="cart_section">
-
     </section>
     <div class="order_total">
         <div class="order_total_content text-md-right">
@@ -46,17 +45,19 @@
             <div class="order_total_amount"></div>
         </div>
     </div>
+    <div class="cart_buttons"> <button type="button" id="empty-cart" class="button cart_button_checkout">Vider le panier</button> </div>
 
+    <!--Formulaire-->
     <section class="formulaire">
         <form>
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault01">Nom</label>
-                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$" required>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Prénom</label>
-                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$" required>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefaultUsername">Email</label>
@@ -64,9 +65,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend2">@</span>
                         </div>
-                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$" required>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationDefault03" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="address" placeholder="Ex: '3 rue orinoco'" pattern="^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$" required>
             </div>
             <div class="form-row">
                 <div class="col-md-6 mb-3">
@@ -74,7 +79,15 @@
                     <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
                 </div>
             </div>
-            <button class="btn btn-primary mx-4 my-4" type="submit">Submit form</button>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="form-check-label" for="invalidCheck2">
+                        <p data-bs-toggle="tooltip" data-bs-placement="top" title="Termes et conditions de vente : Lorem ipsum dolor sit amet consectetur adipisicing elit. "> Accepter les termes et conditions de vente</p>
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-primary mx-4 my-4" type="submit" id="order">Valider la commande</button>
         </form>
     </section>
 
@@ -85,7 +98,7 @@
             <li> <a href="#">Mention Légales</a></li>
         </ul>
     </footer>
-
+    <!-- JavaScript -->
     <script src="/js/panier.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

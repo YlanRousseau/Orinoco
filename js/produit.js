@@ -3,9 +3,9 @@ const id = urlParams.get("id");
 
 main();
 
+
 function main() {
     getArticles();
-
 }
 
 function getArticles() {
@@ -19,20 +19,12 @@ function getArticles() {
                 container.style.textAlign = "center";
                 container.style.padding = "35vh 0";
             })
-            .then(function(teddy) {
+            .then(function displayArticles(teddy) {
                 const productTeddy = teddy;
-
-                const cardImage = document.getElementById("productImage");
-                cardImage.src = productTeddy.imageUrl;
-
-                const productName = document.getElementById("productName");
-                productName.innerHTML = productTeddy.name;
-
-                const productPrice = document.getElementById("productPrice");
-                productPrice.innerHTML = productTeddy.price / 100 + ' €';
-
-                const productDescription = document.getElementById("productDescription");
-                productDescription.innerHTML = productTeddy.description;
+                document.getElementById("productImage").src = productTeddy.imageUrl;
+                document.getElementById("productName").innerHTML = productTeddy.name;
+                document.getElementById("productPrice").innerHTML = productTeddy.price / 100 + ',00 €';
+                document.getElementById("productDescription").innerHTML = productTeddy.description;
 
                 for (let i = 0; i < teddy.colors.length; i++) {
                     let choix = document.createElement("option");
@@ -40,30 +32,49 @@ function getArticles() {
                     productColor.appendChild(choix);
                 }
 
-
-                const btnAddBasket = document.querySelector("#btnAddPanier")
+                var btnAddBasket = document.querySelector("#btnAddPanier");
                 btnAddBasket.addEventListener("click", () => {
-                    let optionsProduct = {
-                        id: productTeddy._id,
-                        image: productTeddy.imageUrl,
-                        name: productTeddy.name,
-                        quantity: 1,
-                        price: productTeddy.price / 100,
-                    };
-
-                    //--Local storage--//
-                    let productSaveLocalStorage = JSON.parse(localStorage.getItem("produit"));
-                    if (productSaveLocalStorage) {
-                        productSaveLocalStorage.push(optionsProduct);
-                        localStorage.setItem("produit", JSON.stringify(productSaveLocalStorage));
-
-                    } else {
-                        productSaveLocalStorage = [];
-                        productSaveLocalStorage.push(optionsProduct);
-                        localStorage.setItem("produit", JSON.stringify(productSaveLocalStorage));
-                    }
-
+                    addProductInBasket(getBasketProduct(productTeddy), parseInt(document.getElementById("productQuantity").value));
                 });
+            }));
 
-            }))
+}
+
+function addProductInBasket(basketProduct, addQuantity) {
+
+    let basket = JSON.parse(localStorage.getItem("produit"));
+
+    if (basket == null) basket = [];
+    if (isProductInBasket(basket, basketProduct.id)) {
+        for (var i = 0; i < basket.length; i++) {
+            var tmp = basket[i];
+            if (tmp.id == basketProduct.id) {
+                tmp.quantity += addQuantity;
+            }
+        }
+    } else {
+        basketProduct.quantity = addQuantity;
+        basket.push(basketProduct);
+    }
+    localStorage.setItem("produit", JSON.stringify(basket));
+}
+
+function isProductInBasket(basket, productId) {
+    for (var i = 0; i < basket.length; i++) {
+        var basketProduct = basket[i];
+        if (basketProduct.id == productId) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function getBasketProduct(teddy) {
+    let basketProduct = {
+        id: teddy._id,
+        image: teddy.imageUrl,
+        name: teddy.name,
+        price: teddy.price
+    };
+    return basketProduct;
 }
