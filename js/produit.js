@@ -1,6 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
-
+basketNumb()
 main();
 
 
@@ -35,6 +35,7 @@ function getArticles() {
                 var btnAddBasket = document.querySelector("#btnAddPanier");
                 btnAddBasket.addEventListener("click", () => {
                     addProductInBasket(getBasketProduct(productTeddy), parseInt(document.getElementById("productQuantity").value));
+                    document.location.reload();
                 });
             }));
 

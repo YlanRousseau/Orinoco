@@ -1,9 +1,12 @@
+basketNumb()
 main();
 
 function main() {
     displayCart();
     basketTotalPrice();
     toEmptyCart();
+    checkFormAndPost();
+
 }
 
 function displayCart() {
@@ -38,7 +41,7 @@ function displayCart() {
                     <div class="cart_item_title">Price</div>
                     <div class="cart_item_text basket-price">${(basket[k].quantity * basket[k].price / 100).toFixed(2)} €</div>
                 </div>
-                <div class="cart_item_supp"> <button type="button" class="btn-supp" data-id="${basket[k].id}">Supprimer</button></div>
+                <div class="cart_item_supp"> <button type="button" class="btn-supp btn-danger" data-id="${basket[k].id}">X</button></div>
             </div>
         </div>  
         `;
@@ -90,4 +93,70 @@ function toEmptyCart() {
 function clearLocalStorage() {
     localStorage.clear();
     window.location.href = "panier.html";
+}
+
+function checkFormAndPost() {
+    const order = document.getElementById("order");
+    const nameRegex = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
+    const adressRegex = /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$/;
+    const cityRegex = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$/;
+    const checkBox = document.getElementById("invalidCheck");
+
+    order.addEventListener("click", (e) => {
+        e.preventDefault();
+        let inputName = document.getElementById("firstName");
+        let inputLastName = document.getElementById("lastName");
+        let inputCity = document.getElementById("city");
+        let inputAdress = document.getElementById("address");
+        let inputMail = document.getElementById("email");
+        if (
+            (nameRegex.test(inputName.value) == true) &
+            (nameRegex.test(inputLastName.value) == true) &
+            (emailRegex.test(inputMail.value) == true) &
+            (cityRegex.test(inputCity.value) == true) &
+            (adressRegex.test(inputAdress.value) == true) &
+            (checkBox.checked == true)
+        ) {
+
+            let basket = JSON.parse(localStorage.getItem("produit"));
+            let productOrder = [];
+            for (listeId of basket) {
+                productOrder.push(listeId.id);
+                JSON.stringify(productOrder);
+            }
+
+            const order = {
+                contact: {
+                    firstName: inputName.value,
+                    lastName: inputLastName.value,
+                    address: inputAdress.value,
+                    city: inputCity.value,
+                    email: inputMail.value,
+                },
+                products: productOrder,
+            };
+
+            const options = {
+                method: "POST",
+                body: JSON.stringify(order),
+                headers: { "Content-Type": "application/json" },
+            };
+            console.log(options);
+            let priceConfirmation = document.querySelector(".totalprice").innerText;
+            priceConfirmation = priceConfirmation.split(" :");
+
+            fetch("http://localhost:3000/api/teddies/order", options)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    localStorage.setItem("orderId", data.orderId);
+                    localStorage.setItem("total", priceConfirmation);
+                    document.location.href = "order.html";
+                })
+                .catch((erreur) => console.log("erreur : " + erreur));
+        } else {
+            alert("Veuillez correctement remplir le formulaire pour valider votre commande.");
+        }
+    })
 }

@@ -219,3 +219,17 @@ li {
     background-image: linear-gradient( 315deg, rgba(147, 86, 220, 0.95), rgb(255 164 121 / 95%));
     color: #FFF;
 }
+
+.recap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm {
+    box-shadow: 0.25rem 0.25rem 0.5rem #0000002e;
+    margin: 4rem 0;
+    padding: 3rem;
+    color: black;
+    text-align: center;
+}

@@ -26,7 +26,7 @@
                         <a class="nav-link active" aria-current="page" href="/index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Panier</a>
+                        <a class="nav-link active" href="#" id="cartNumber">Panier</a>
                     </li>
                 </ul>
             </div>
@@ -37,12 +37,36 @@
             <p class="">Votre panier est vide </p>
         </div>
     </section>
-    <section class="cart_section">
+
+    <template id="template">
+        <div class="row basketEffect" id="${basket[k].id}">
+            <div class="cart_item_image"><img class="imgteddy img-fluid p-1" id="imgTeddy" src="" alt=""></div>
+            <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                <div class="cart_item_name cart_info_col">
+                    <div class="cart_item_title">Name</div>
+                    <div class="cart_item_text basket-name" id="teddyName"></div>
+                </div>
+                <div class="cart_item_price cart_info_col">
+                    <div class="cart_item_title">Quantity</div>
+                    <div class="cart_item_text basket-quantity" id="quantity"></div>
+                </div>
+                <div class="cart_item_total cart_info_col">
+                    <div class="cart_item_title">Price</div>
+                    <div class="cart_item_text basket-price" id="teddyPrice"></div>
+                </div>
+                <div class="cart_item_supp"> <button type="button" id="btn-supp" data-id="">Supprimer</button></div>
+            </div>
+        </div>  
+    </template>
+
+    <section class="cart_section" id="liste">
     </section>
+
+
     <div class="order_total">
         <div class="order_total_content text-md-right">
             <div class="order_total_title">Prix total:</div>
-            <div class="order_total_amount"></div>
+            <div class="order_total_amount totalprice"></div>
         </div>
     </div>
     <div class="cart_buttons"> <button type="button" id="empty-cart" class="button cart_button_checkout">Vider le panier</button> </div>
@@ -53,19 +77,19 @@
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault01">Nom</label>
-                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$" required>
+                    <input type="text" class="form-control" id="firstName" placeholder="First name" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$" required>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Prénom</label>
-                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$" required>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last name" pattern="^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$" required>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefaultUsername">Email</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                            <span class="input-group-text" id="nimp">@</span>
                         </div>
-                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$" required>
+                        <input type="text" class="form-control" id="email" placeholder="Username" aria-describedby="inputGroupPrepend2" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$" required>
                     </div>
                 </div>
             </div>
@@ -76,12 +100,12 @@
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <label for="validationDefault03">Ville</label>
-                    <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+                    <input type="text" class="form-control" id="city" placeholder="City" required>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                     <label class="form-check-label" for="invalidCheck2">
                         <p data-bs-toggle="tooltip" data-bs-placement="top" title="Termes et conditions de vente : Lorem ipsum dolor sit amet consectetur adipisicing elit. "> Accepter les termes et conditions de vente</p>
                     </label>
@@ -99,6 +123,7 @@
         </ul>
     </footer>
     <!-- JavaScript -->
+    <script src="/js/function.js"></script>
     <script src="/js/panier.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
