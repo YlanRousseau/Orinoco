@@ -233,3 +233,19 @@ li {
     color: black;
     text-align: center;
 }
+
+@media (max-width:425px) {
+    .cart_item_image {
+        display: none;
+    }
+    .cart_item_info {
+        width: 100%;
+        padding-top: 0;
+        flex-direction: row!important;
+    }
+    .cart_item_name,
+    .cart_item_price,
+    .cart_item_total {
+        text-align: center;
+    }
+}
