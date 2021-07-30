@@ -38,8 +38,8 @@
         </div>
     </section>
 
-    <template id="template">
-        <div class="row basketEffect" id="${basket[k].id}">
+    <template id="productLine">
+        <div class="row basketEffect">
             <div class="cart_item_image"><img class="imgteddy img-fluid p-1" id="imgTeddy" src="" alt=""></div>
             <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                 <div class="cart_item_name cart_info_col">
@@ -54,7 +54,7 @@
                     <div class="cart_item_title">Price</div>
                     <div class="cart_item_text basket-price" id="teddyPrice"></div>
                 </div>
-                <div class="cart_item_supp"> <button type="button" id="btn-supp" data-id="">Supprimer</button></div>
+                <div class="cart_item_supp"> <button type="button" class="btn-supp btn-danger" id="btn-supp">X</button></div>
             </div>
         </div>  
     </template>

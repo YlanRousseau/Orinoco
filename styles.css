@@ -129,11 +129,11 @@ a {
 }
 
 .cart_item_price {
-    text-align: right
+    text-align: center;
 }
 
 .cart_item_total {
-    text-align: right
+    text-align: center;
 }
 
 .order_total {

@@ -25,33 +25,41 @@ function displayCart() {
     }
 
     let structureProductBasket = [];
+    let listeProduits = document.getElementById('liste');
     for (k = 0; k < basket.length; k++) {
-        document.querySelector(".cart_section").innerHTML += ` <div class="row basketEffect" id="${basket[k].id}">
-            <div class="cart_item_image"><img class="imgteddy img-fluid p-1" src="${basket[k].image}" alt=""></div>
-            <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                <div class="cart_item_name cart_info_col">
-                    <div class="cart_item_title">Name</div>
-                    <div class="cart_item_text basket-name">${basket[k].name}</div>
-                </div>
-                <div class="cart_item_price cart_info_col">
-                    <div class="cart_item_title">Quantity</div>
-                    <div class="cart_item_text basket-quantity">${basket[k].quantity}</div>
-                </div>
-                <div class="cart_item_total cart_info_col">
-                    <div class="cart_item_title">Price</div>
-                    <div class="cart_item_text basket-price">${(basket[k].quantity * basket[k].price / 100).toFixed(2)} €</div>
-                </div>
-                <div class="cart_item_supp"> <button type="button" class="btn-supp btn-danger" data-id="${basket[k].id}">X</button></div>
-            </div>
-        </div>  
-        `;
 
-        Array.from(document.getElementsByClassName("btn-supp")).forEach(function(element) {
-            element.addEventListener('click', function(e) {
-                deleteProduct(this.dataset.id);
-            });
-        });
+        let templateElt = document.getElementById('productLine');
+        let cloneElt = document.importNode(templateElt.content, true);
+        cloneElt.querySelector('.basketEffect').id = basket[k].id;
+
+        var imgTeddy = cloneElt.getElementById('imgTeddy');
+        imgTeddy.src = basket[k].image;
+        imgTeddy.removeAttribute('id');
+
+        var teddyName = cloneElt.getElementById('teddyName');
+        teddyName.innerHTML = basket[k].name;
+        teddyName.removeAttribute('id');
+
+        var quantity = cloneElt.getElementById('quantity');
+        quantity.innerHTML = basket[k].quantity;
+        quantity.removeAttribute('id');
+
+        var teddyPrice = cloneElt.getElementById('teddyPrice');
+        teddyPrice.innerHTML = (basket[k].quantity * basket[k].price / 100).toFixed(2);
+        teddyPrice.removeAttribute('id');
+
+        var btnSupp = cloneElt.getElementById('btn-supp');
+        btnSupp.dataset.id = basket[k].id;
+        btnSupp.removeAttribute('id');
+        listeProduits.appendChild(cloneElt);
+
     }
+
+    Array.from(document.getElementsByClassName("btn-supp")).forEach(function(element) {
+        element.addEventListener('click', function(e) {
+            deleteProduct(this.dataset.id);
+        });
+    });
 }
 
 function basketTotalPrice() {

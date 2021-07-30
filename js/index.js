@@ -14,6 +14,7 @@
 
   /* Récupérer les informations contenues dans le tableau*/
   function displayTeddy(teddy) {
+      console.log(teddy);
       const templateElt = document.getElementById('template');
       const cloneElt = document.importNode(templateElt.content, true)
 
