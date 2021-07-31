@@ -45,7 +45,7 @@ function displayCart() {
         quantity.removeAttribute('id');
 
         var teddyPrice = cloneElt.getElementById('teddyPrice');
-        teddyPrice.innerHTML = (basket[k].quantity * basket[k].price / 100).toFixed(2);
+        teddyPrice.innerHTML = (basket[k].quantity * basket[k].price / 100).toFixed(2) + ` €`;
         teddyPrice.removeAttribute('id');
 
         var btnSupp = cloneElt.getElementById('btn-supp');
