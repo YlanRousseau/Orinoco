@@ -1,11 +1,11 @@
-const urlParams = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(location.search);
 const id = urlParams.get("id");
 basketNumb()
 main();
 
 function main() {
     getArticles();
-    checkIf404();
+    if404();
 }
 // On récupère uniquement le produit dont on a besoin via le paramètre dans la requête
 function getArticles() {
@@ -78,4 +78,16 @@ function getBasketProduct(teddy) {
         price: teddy.price
     };
     return basketProduct;
+}
+
+function if404() {
+    window.addEventListener("error", (e) => {
+            let erreur = document.querySelector("#secContainer");
+            erreur.innerHTML =
+                "Nous n'avons pas réussi à afficher nos nounours.";
+            erreur.style.textAlign = "center";
+            erreur.style.padding = "35vh 0";
+        },
+        true
+    );
 }
